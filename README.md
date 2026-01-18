@@ -57,4 +57,4 @@ MVP
 Figma：https://www.figma.com/design/khjINXm4Lz3vlR8XfWZ2Es/Three?node-id=0-1&t=qHwQT0MadTKK19Uh-1
 
 ## ER図
-https://i.gyazo.com/c9967683d7c549a9163935675393637d.png
+https://i.gyazo.com/b3fd6a26221c0a0e1f22c793c53549aa.png
