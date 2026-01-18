@@ -52,3 +52,6 @@ MVP
 - データベース:PostgreSQL
 - デプロイ先:Render
 - 使用予定のライブラリ:devise, kaminari, ransack, rails-i18n, rubocop
+
+## 画面遷移図
+Figma：https://www.figma.com/design/khjINXm4Lz3vlR8XfWZ2Es/Three?node-id=0-1&t=qHwQT0MadTKK19Uh-1
