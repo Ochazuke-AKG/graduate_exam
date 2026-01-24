@@ -1,57 +1,24 @@
-# graduate_exam
-Graduation project
-title: "Three"<br>
+# README
 
-## サービス概要
-- 「3つのGood」と「1つの音楽」に絞った、ミニマルな3行日記サービス。
-- ポジティブな思考習慣（Three Good Things）に、音楽の記憶をリンク。
-- 単純な記録に留まらず、心のセルフケアと音楽を通した追想体験を提供。<br>
+This README would normally document whatever steps are necessary to get the
+application up and running.
 
-## このサービスへの思い・作りたい理由
-- 元よりネガティブ思考であり、ミスや後悔を反芻し続けてしまう「考え方の癖」を自覚。
-- 諸々の心理学的対処法を調べる中でThree Good Thingsに出会う。
-- シンプルで制限のあるフォーマットだからこそ心理的負担が少なく、継続が課題である自分の習慣に取り入れやすい。
-- しかし良いことや幸せに感じたことばかりでなく、たまにはネガティブな自分も許容したい。
-- 音楽がとても好きで、人生の様々な思い出と結びついている。
-- 思考の癖を修正し自己肯定感を高めるツールを作りたい。ゆくゆくは過去の自分と当時の音楽が、今の自分を励ましてくれたり、良い思い出になると良い。<br>
+Things you may want to cover:
 
-## ユーザー層について
-- 音楽好きな会社員を想定。
-- 日々、仕事で「感情の揺れ」が多く発生する。
-- 周囲を見ていると、音楽は「気分転換」や「思い出」のトリガーとなっている。<br>
+* Ruby version
 
-## サービスの利用イメージ
-1. 夜の習慣: 寝る前にアプリを開き、今日良かったこと・幸せに感じたこと・感謝・心のお守りになった言葉などのGoodを3つを入力。
-　（不安や反省などネガティブは別途メモ欄に記載。） 
-2. 音楽の記録: その日再生していた曲名とアーティストを入力して保存。
-3. 追想: ネガティブに苛まれそうな際、過去の記録と音楽を振り返り、ポジティブな感情を取り戻す。<br>
+* System dependencies
 
-→「Good」に焦点を当て幸福感を向上させる習慣の定着を促し、「あの時、何を聴いてどんな良いことがあったか」という記憶を呼び起こしポジティブの再現性を高める。<br>
+* Configuration
 
-## ユーザーの獲得について
-Spotify/Apple Music プレイリストとの連動
-- Threeでよく記録されている曲」などを独自集計し、プレイリストとして公開。音楽メディアやファンコミュニティからの流入を図る。<br>
+* Database creation
 
-## サービスの差別化ポイント・推しポイント
-- 習慣化: 自由記述ではなく「3行」という枠組みで心理的負担を軽減。
-- 音楽によりエピソードを呼び起こす仕組み。<br>
+* Database initialization
 
-## 機能候補
-MVP
-1. 3行＋1曲（タイトル・アーティスト名） 投稿機能
-2. タイムライン表示
-3. 日付による絞り込み機能
-4. 曲名orアーティスト名別検索機能<br>
+* How to run the test suite
 
-追加機能
-1. 「Time Machine」機能：1ヶ月前、1年前の今日、何を聴いてどんな良いことがあったかをランダムに通知
-2. SpotifyとのAPI連携：アーティスト名を入力すると候補を出力。<br>
+* Services (job queues, cache servers, search engines, etc.)
 
-## 使用する技術スタック
-- 使用するフレームワーク:Ruby on Rails 7.1.x
-- データベース:PostgreSQL
-- デプロイ先:Render
-- 使用予定のライブラリ:devise, kaminari, ransack, rails-i18n, rubocop
+* Deployment instructions
 
-## 画面遷移図
-Figma：https://www.figma.com/design/khjINXm4Lz3vlR8XfWZ2Es/Three?node-id=0-1&t=qHwQT0MadTKK19Uh-1
+* ...
