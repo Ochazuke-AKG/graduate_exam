@@ -1,0 +1,24 @@
+ja:
+  activerecord:
+    attributes:
+      user:
+        name: "名前"
+        email: "メールアドレス"
+        password: "パスワード"
+        password_confirmation: "パスワード（確認）"
+    models:
+      user: "ユーザー"
+      diary: "日記"
+  devise:
+    failure:
+      already_authenticated: "既にログインしています。"
+      unauthenticated: "ログインまたは登録が必要です。"
+      not_found_in_database: "メールアドレスまたはパスワードが違います。"
+    registrations:
+      signed_up: "アカウント登録が完了しました。"
+      updated: "アカウント情報を変更しました。"
+      destroyed: "アカウントを削除しました。"
+    sessions:
+      signed_in: "ログインしました。"
+      signed_out: "ログアウトしました。"
+      already_signed_out: "ログアウトしました。"

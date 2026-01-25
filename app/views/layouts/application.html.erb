@@ -24,32 +24,21 @@
     <%= javascript_importmap_tags %>
 
     <script>
-      // JavaScriptエラーが発生しても、画面のロック（グレーアウト）を強制的に解除する
       window.addEventListener('load', function() {
         document.documentElement.removeAttribute("data-turbo-submitting");
         document.querySelectorAll("[disabled]").forEach(el => el.removeAttribute("disabled"));
-        // 物理的な操作不能状態を強制解除
         document.body.style.pointerEvents = "auto";
         document.body.style.userSelect = "auto";
       });
     </script>
   </head>
 
-  <%# 修正ポイント: Flashメッセージを z-index で確実に背後に回さないよう調整 %>
-  <body class="bg-three-beige flex flex-col min-h-screen text-three-dark relative">
+  <body class="bg-three-beige flex flex-col min-h-screen text-three-dark">
     <%= render 'shared/header' %>
+  
+    <%= render 'shared/flash_messages' %>
 
-    <%# 通知エリアを独立したブロックにする %>
-    <div id="flash-messages">
-      <% if notice %>
-        <p class="bg-green-100 text-green-700 p-4 text-center w-full"><%= notice %></p>
-      <% end %>
-      <% if alert %>
-        <p class="bg-red-100 text-red-700 p-4 text-center w-full"><%= alert %></p>
-      <% end %>
-    </div>
-
-    <main class="flex-grow flex flex-col justify-center relative z-10">
+    <main class="flex-grow flex flex-col justify-center">
       <%= yield %>
     </main>
 
