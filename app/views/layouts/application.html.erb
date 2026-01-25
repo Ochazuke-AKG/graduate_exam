@@ -5,26 +5,43 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
-    <script src="https://cdn.tailwindcss.com"></script>
-
+    
+    <%# Tailwind CDN %>
+    <script src="https://cdn.tailwindcss.com/3.4.1"></script>
     <script>
       tailwind.config = {
         theme: {
           extend: {
             colors: {
               'three-dark': '#2A2724',
-              'three-beige': '#F5EFE6',
+              'three-beige': '#F9F4EF',
             }
           }
         }
       }
     </script>
-
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
+
+    <script>
+      window.addEventListener('load', function() {
+        document.documentElement.removeAttribute("data-turbo-submitting");
+        document.querySelectorAll("[disabled]").forEach(el => el.removeAttribute("disabled"));
+        document.body.style.pointerEvents = "auto";
+        document.body.style.userSelect = "auto";
+      });
+    </script>
   </head>
 
-  <body>
-    <%= yield %>
+  <body class="bg-three-beige flex flex-col min-h-screen text-three-dark">
+    <%= render 'shared/header' %>
+  
+    <%= render 'shared/flash_messages' %>
+
+    <main class="flex-grow flex flex-col justify-center">
+      <%= yield %>
+    </main>
+
+    <%= render 'shared/footer' %>
   </body>
 </html>
