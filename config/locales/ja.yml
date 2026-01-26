@@ -1,24 +1,59 @@
 ja:
+  defaults:
+    create: 登録
+    post: 投稿
+    update: 更新
+    delete: 削除
+    delete_confirm: 削除しますか？
+  helpers:
+    submit:
+      create: "%{model}を登録"
+      update: "%{model}を更新"
+      submit: 保存
   activerecord:
+    models:
+      user: ユーザー
+      diary: 日記
     attributes:
       user:
-        name: "名前"
-        email: "メールアドレス"
-        password: "パスワード"
-        password_confirmation: "パスワード（確認）"
-    models:
-      user: "ユーザー"
-      diary: "日記"
+        name: 名前
+        email: メールアドレス
+        password: パスワード
+        password_confirmation: パスワード（確認）
+      diary:
+        entry_date: 記録日
+        good_1: Good1
+        good_2: Good2
+        good_3: Good3
+        memo: メモ
+        music_title: 曲名
+        artist_name: アーティスト名
+  header:
+    login: ログイン
+    register: 新規登録
+    logout: ログアウト
+    new_diary: 日記を書く
+  sessions:
+    new:
+      title: ログイン
+      submit: ログイン
+      to_register_page: アカウントをお持ちでない方はこちら
+  registrations:
+    new:
+      title: 新規登録
+      submit: 登録
+      to_login_page: ログインはこちら
+  user_sessions:
+    create:
+      success: "ログインしました"
+      failure: "ログインに失敗しました"
+    destroy:
+      success: "ログアウトしました"
   devise:
+    sessions:
+      signed_in: "ログインしました"
+      signed_out: "ログアウトしました"
     failure:
-      already_authenticated: "既にログインしています。"
       unauthenticated: "ログインまたは登録が必要です。"
       not_found_in_database: "メールアドレスまたはパスワードが違います。"
-    registrations:
-      signed_up: "アカウント登録が完了しました。"
-      updated: "アカウント情報を変更しました。"
-      destroyed: "アカウントを削除しました。"
-    sessions:
-      signed_in: "ログインしました。"
-      signed_out: "ログアウトしました。"
-      already_signed_out: "ログアウトしました。"
+      invalid: "メールアドレスまたはパスワードが違います。"

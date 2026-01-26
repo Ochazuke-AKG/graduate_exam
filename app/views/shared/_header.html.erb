@@ -5,16 +5,13 @@
 
   <nav class="flex items-center gap-6">
     <% if user_signed_in? %>
-      <%# 安全に名前を表示し、ログアウトのTurbo動作を明示 %>
-      <span class="text-three-dark text-xs font-medium">
-        <%= current_user.respond_to?(:name) ? current_user.name : "ユーザー" %> さん
-      </span>
-      <%= link_to "ログアウト", destroy_user_session_path, 
-          data: { turbo_method: :delete, turbo_confirm: "ログアウトしますか？" }, 
-          class: "text-three-dark font-bold text-sm hover:opacity-70 transition" %>
+      <span class="text-three-dark text-xs font-medium"><%= current_user.name %>さん</span>
+      <%= link_to t('header.logout'), destroy_user_session_path, 
+          data: { turbo_method: :delete, turbo_confirm: t('defaults.delete_confirm') }, 
+          class: "bg-three-dark text-three-beige px-6 py-2 font-bold text-sm rounded shadow-sm hover:opacity-90 transition" %>
     <% else %>
-      <%= link_to "新規登録", new_user_registration_path, class: "text-three-dark font-bold text-sm hover:opacity-70 transition" %>
-      <%= link_to "ログイン", new_user_session_path, class: "bg-three-dark text-three-beige px-6 py-2 font-bold text-sm rounded shadow-sm hover:opacity-90 transition" %>
+      <%= link_to t('header.register'), new_user_registration_path, class: "text-three-dark font-bold text-sm hover:opacity-70 transition" %>
+      <%= link_to t('header.login'), new_user_session_path, class: "bg-three-dark text-three-beige px-6 py-2 font-bold text-sm rounded shadow-sm hover:opacity-90 transition" %>
     <% end %>
   </nav>
 </header>

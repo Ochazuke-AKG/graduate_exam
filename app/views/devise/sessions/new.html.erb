@@ -1,27 +1,41 @@
-<h2>Log in</h2>
+<div class="flex-grow bg-three-dark flex flex-col items-center justify-center py-10 min-h-[calc(100vh-160px)]">
+  <div class="w-full max-w-[400px] px-6">
+    
+    <h2 class="text-center text-three-beige text-lg font-bold mb-12 tracking-widest">
+      ログイン
+    </h2>
 
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <p><%= f.label :email %></p>
-    <p><%= f.email_field :email, autofocus: true, autocomplete: "email" %></p>
+    <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: { class: "space-y-6" }) do |f| %>
+      
+      <%# メールアドレス %>
+      <div class="space-y-2">
+        <%= f.label :email, User.human_attribute_name(:email), class: "block text-three-beige text-sm font-medium" %>
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", 
+            class: "w-full h-10 px-3 bg-three-beige text-three-dark border-none rounded shadow-inner focus:ring-2 focus:ring-white outline-none transition" %>
+      </div>
+
+      <%# パスワード %>
+      <div class="space-y-2">
+        <%= f.label :password, User.human_attribute_name(:password), class: "block text-three-beige text-sm font-medium" %>
+        <%= f.password_field :password, autocomplete: "current-password", 
+            class: "w-full h-10 px-3 bg-three-beige text-three-dark border-none rounded shadow-inner focus:ring-2 focus:ring-white outline-none transition" %>
+      </div>
+
+      <%# ログイン状態の保持（Remember me） %>
+      <% if devise_mapping.rememberable? %>
+        <div class="flex items-center gap-2 py-2">
+          <%= f.check_box :remember_me, class: "w-4 h-4 rounded border-none text-three-dark focus:ring-0 cursor-pointer bg-three-beige" %>
+          <%= f.label :remember_me, "ログイン状態を保持する", class: "text-three-beige text-[10px] cursor-pointer" %>
+        </div>
+      <% end %>
+
+      <%# 送信ボタン：ログアウト時のエラー対策として data: { turbo: false } を念のため追加 %>
+      <div class="flex justify-end pt-4">
+        <%= f.submit t('sessions.new.submit'), 
+            data: { turbo: false },
+            class: "bg-three-beige text-three-dark px-10 py-2 font-bold text-xs rounded shadow-md hover:bg-white hover:scale-105 active:scale-95 transition-all cursor-pointer border-none" %>
+      </div>
+    <% end %>
+
   </div>
-
-  <div class="field">
-    <p><%= f.label :password %></p>
-    <p><%= f.password_field :password, autocomplete: "current-password" %></p>
-  </div>
-
-  <% if devise_mapping.rememberable? %>
-    <div class="field">
-      <p><%= f.check_box :remember_me %></p>
-      <p><%= f.label :remember_me %></p>
-    </div>
-  <% end %>
-
-  <div class="actions">
-    <%= f.submit "Log in",
-        data: { turbo: false } %>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+</div>
