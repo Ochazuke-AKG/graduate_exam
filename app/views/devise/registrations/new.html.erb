@@ -2,42 +2,41 @@
   <div class="w-full max-w-[400px] px-6">
     
     <h2 class="text-center text-three-beige text-lg font-bold mb-10 tracking-widest">
-      新規登録
+      <%= t('registrations.new.title') %>
     </h2>
 
     <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { class: "space-y-6" }) do |f| %>
       
       <%# 名前 %>
       <div class="space-y-2">
-        <%= f.label :name, "名前", class: "block text-three-beige text-sm font-medium" %>
+        <%= f.label :name, User.human_attribute_name(:name), class: "block text-three-beige text-sm font-medium" %>
         <%= f.text_field :name, autofocus: true, 
             class: "w-full h-10 px-3 bg-three-beige text-three-dark border-none rounded shadow-inner focus:ring-2 focus:ring-white outline-none transition" %>
       </div>
 
       <%# メールアドレス %>
       <div class="space-y-2">
-        <%= f.label :email, "メールアドレス", class: "block text-three-beige text-sm font-medium" %>
+        <%= f.label :email, User.human_attribute_name(:email), class: "block text-three-beige text-sm font-medium" %>
         <%= f.email_field :email, autocomplete: "email", 
             class: "w-full h-10 px-3 bg-three-beige text-three-dark border-none rounded shadow-inner focus:ring-2 focus:ring-white outline-none transition" %>
       </div>
 
       <%# パスワード %>
       <div class="space-y-2">
-        <%= f.label :password, "パスワード", class: "block text-three-beige text-sm font-medium" %>
+        <%= f.label :password, User.human_attribute_name(:password), class: "block text-three-beige text-sm font-medium" %>
         <%= f.password_field :password, autocomplete: "new-password", 
             class: "w-full h-10 px-3 bg-three-beige text-three-dark border-none rounded shadow-inner focus:ring-2 focus:ring-white outline-none transition" %>
       </div>
 
       <%# パスワード（確認） %>
       <div class="space-y-2">
-        <%= f.label :password_confirmation, "パスワード（確認）", class: "block text-three-beige text-sm font-medium" %>
+        <%= f.label :password_confirmation, User.human_attribute_name(:password_confirmation), class: "block text-three-beige text-sm font-medium" %>
         <%= f.password_field :password_confirmation, autocomplete: "new-password", 
             class: "w-full h-10 px-3 bg-three-beige text-three-dark border-none rounded shadow-inner focus:ring-2 focus:ring-white outline-none transition" %>
       </div>
 
-      <%# 送信ボタン %>
       <div class="flex justify-end pt-8">
-        <%= f.submit "登録", 
+        <%= f.submit t('registrations.new.submit'), 
             data: { turbo: false },
             class: "bg-three-beige text-three-dark px-8 py-2 font-bold text-xs rounded shadow hover:bg-white transition-all cursor-pointer border-none" %>
       </div>
