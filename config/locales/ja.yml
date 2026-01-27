@@ -1,5 +1,10 @@
 ja:
   defaults:
+    flash_message:
+      created: "%{item}を記録しました"
+      not_created: "%{item}を記録できませんでした"
+      updated: "%{item}を更新しました"
+      deleted: "%{item}を削除しました"
     create: 登録
     post: 投稿
     update: 更新
@@ -33,6 +38,7 @@ ja:
     register: 新規登録
     logout: ログアウト
     new_diary: 日記を書く
+    index: タイムライン
   sessions:
     new:
       title: ログイン

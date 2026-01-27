@@ -6,6 +6,8 @@
   <nav class="flex items-center gap-6">
     <% if user_signed_in? %>
       <span class="text-three-dark text-xs font-medium"><%= current_user.name %>さん</span>
+      <%= link_to t('header.new_diary'), new_diary_path, class: "text-three-dark font-bold text-sm hover:opacity-70 transition" %>
+      <%= link_to t('header.index'), diaries_path, class: "text-three-dark font-bold text-sm hover:opacity-70 transition" %>
       <%= link_to t('header.logout'), destroy_user_session_path, 
           data: { turbo_method: :delete, turbo_confirm: t('defaults.delete_confirm') }, 
           class: "bg-three-dark text-three-beige px-6 py-2 font-bold text-sm rounded shadow-sm hover:opacity-90 transition" %>
