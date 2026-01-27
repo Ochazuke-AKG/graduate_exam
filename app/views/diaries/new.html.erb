@@ -1,40 +1,49 @@
 <div>
 <div class="flex-grow bg-three-dark flex flex-col items-center justify-center py-10 min-h-[calc(100vh-160px)] relative overflow-hidden">
   
-  <%= form_with model: @diary, local: true, class: "w-full max-w-[400px] px-6" do |f| %>
+  <%= form_with model: @diary, local: true, class: "..." do |f| %>
+  <% if @diary.errors.any? %>
+    <div class="bg-red-500/10 border border-red-500 text-red-500 p-3 rounded mb-6 text-xs text-center">
+      <%= t('defaults.flash_message.not_created', item: Diary.model_name.human) %>
+    </div>
+  <% end %>
     
     <div class="step-section space-y-8 text-center" data-step="1">
       <div class="space-y-2">
         <h2 class="font-gelasio text-three-beige text-4xl select-none leading-none">1</h2>
-        <p class="text-three-beige text-sm font-bold tracking-widest">（1つ目のGood）</p>
+        <p class="text-three-beige text-sm font-bold tracking-widest">（<%= Diary.human_attribute_name(:good_1) %>）</p>
       </div>
       <%= f.text_field :good_1, autofocus: true, 
           class: "w-full h-10 px-3 bg-three-beige text-three-dark border-none rounded shadow-inner outline-none transition" %>
       <div class="flex justify-end pt-4">
-        <button type="button" onclick="nextStep(2)" class="bg-three-beige text-three-dark px-10 py-2 font-bold text-xs rounded shadow-md hover:bg-white transition-all cursor-pointer">次へ</button>
+        <button type="button" onclick="nextStep(2)" class="bg-three-beige text-three-dark px-10 py-2 font-bold text-xs rounded shadow-md hover:bg-white transition-all cursor-pointer">
+          <%= t('defaults.next') %>
+        </button>
       </div>
     </div>
 
     <div class="step-section hidden space-y-8 text-center" data-step="2">
       <div class="space-y-2">
         <h2 class="font-gelasio text-three-beige text-4xl select-none leading-none">2</h2>
-        <p class="text-three-beige text-sm font-bold tracking-widest">（2つ目のGood）</p>
+        <p class="text-three-beige text-sm font-bold tracking-widest">（<%= Diary.human_attribute_name(:good_2) %>）</p>
       </div>
       <%= f.text_field :good_2, class: "w-full h-10 px-3 bg-three-beige text-three-dark border-none rounded shadow-inner outline-none" %>
       <div class="flex justify-between items-center pt-4">
-        <button type="button" onclick="nextStep(1)" class="text-three-beige/40 text-xs hover:text-three-beige transition">戻る</button>
-        <button type="button" onclick="nextStep(3)" class="bg-three-beige text-three-dark px-10 py-2 font-bold text-xs rounded shadow-md hover:bg-white transition-all cursor-pointer">次へ</button>
+        <button type="button" onclick="nextStep(1)" class="text-three-beige/40 text-xs hover:text-three-beige transition"><%= t('defaults.back') %></button>
+        <button type="button" onclick="nextStep(3)" class="bg-three-beige text-three-dark px-10 py-2 font-bold text-xs rounded shadow-md hover:bg-white transition-all cursor-pointer">
+          <%= t('defaults.next') %>
+        </button>
       </div>
     </div>
 
     <div class="step-section hidden space-y-8 text-center" data-step="3">
       <div class="space-y-2">
         <h2 class="font-gelasio text-three-beige text-4xl select-none leading-none">3</h2>
-        <p class="text-three-beige text-sm font-bold tracking-widest">（3つ目のGood）</p>
+        <p class="text-three-beige text-sm font-bold tracking-widest">（<%= Diary.human_attribute_name(:good_3) %>）</p>
       </div>
       <%= f.text_field :good_3, class: "w-full h-10 px-3 bg-three-beige text-three-dark border-none rounded shadow-inner outline-none" %>
       <div class="flex justify-between items-center pt-4">
-        <button type="button" onclick="nextStep(2)" class="text-three-beige/40 text-xs hover:text-three-beige transition">戻る</button>
+        <button type="button" onclick="nextStep(2)" class="text-three-beige/40 text-xs hover:text-three-beige transition"><%= t('defaults.back') %></button>
         <button type="button" onclick="nextStep(4)" class="bg-three-beige text-three-dark px-10 py-2 font-bold text-xs rounded shadow-md hover:bg-white transition-all cursor-pointer">次へ</button>
       </div>
     </div>
@@ -42,51 +51,55 @@
     <div class="step-section hidden space-y-8 text-center" data-step="4">
       <div class="space-y-2">
         <h2 class="font-gelasio text-three-beige text-4xl select-none">Music</h2>
-        <p class="text-three-beige text-sm font-bold tracking-widest">（今日のBGM）</p>
+        <p class="text-three-beige text-sm font-bold tracking-widest">（<%= t('diaries.new.music_hint') %>）</p>
       </div>
       <div class="space-y-4 text-left">
         <div>
-          <%= f.label :artist_name, "アーティスト名", class: "text-three-beige text-[10px] mb-1 block" %>
+          <%= f.label :artist_name, Diary.human_attribute_name(:artist_name), class: "text-three-beige text-[10px] mb-1 block" %>
           <%= f.text_field :artist_name, class: "w-full h-10 px-3 bg-three-beige text-three-dark border-none rounded shadow-inner outline-none" %>
         </div>
         <div>
-          <%= f.label :music_title, "曲名", class: "text-three-beige text-[10px] mb-1 block" %>
+          <%= f.label :music_title, Diary.human_attribute_name(:music_title), class: "text-three-beige text-[10px] mb-1 block" %>
           <%= f.text_field :music_title, class: "w-full h-10 px-3 bg-three-beige text-three-dark border-none rounded shadow-inner outline-none" %>
         </div>
       </div>
       <div class="flex justify-between items-center pt-4">
-        <button type="button" onclick="nextStep(3)" class="text-three-beige/40 text-xs hover:text-three-beige transition">戻る</button>
-        <button type="button" onclick="nextStep(5)" class="bg-three-beige text-three-dark px-10 py-2 font-bold text-xs rounded shadow-md hover:bg-white transition-all cursor-pointer">次へ</button>
+        <button type="button" onclick="nextStep(3)" class="text-three-beige/40 text-xs hover:text-three-beige transition"><%= t('defaults.back') %></button>
+        <button type="button" onclick="nextStep(5)" class="bg-three-beige text-three-dark px-10 py-2 font-bold text-xs rounded shadow-md hover:bg-white transition-all cursor-pointer">
+          <%= t('defaults.next') %>
+        </button>
       </div>
     </div>
 
     <div class="step-section hidden space-y-8 text-center" data-step="5">
       <div class="space-y-2">
         <h2 class="font-gelasio text-three-beige text-4xl select-none">Date/Memo</h2>
-        <p class="text-three-beige text-sm font-bold tracking-widest">（日付/追記）</p>
+        <p class="text-three-beige text-sm font-bold tracking-widest">（<%= t('diaries.new.memo_hint') %>）</p>
       </div>
       <div class="space-y-4 text-left">
         <%= f.date_field :entry_date, value: Time.current.to_date, class: "w-full h-10 px-3 bg-three-beige text-three-dark border-none rounded shadow-inner outline-none" %>
         <%= f.text_area :memo, rows: 3, class: "w-full p-3 bg-three-beige text-three-dark border-none rounded shadow-inner outline-none" %>
       </div>
       <div class="flex justify-between items-center pt-4">
-        <button type="button" onclick="nextStep(4)" class="text-three-beige/40 text-xs hover:text-three-beige transition">戻る</button>
-        <button type="button" onclick="updateSummary(); nextStep(6)" class="bg-three-beige text-three-dark px-10 py-2 font-bold text-xs rounded shadow-md hover:bg-white transition-all cursor-pointer">確認</button>
+        <button type="button" onclick="nextStep(4)" class="text-three-beige/40 text-xs hover:text-three-beige transition"><%= t('defaults.back') %></button>
+        <button type="button" onclick="updateSummary(); nextStep(6)" class="bg-three-beige text-three-dark px-10 py-2 font-bold text-xs rounded shadow-md hover:bg-white transition-all cursor-pointer">
+          <%= t('defaults.confirm') %>
+        </button>
       </div>
     </div>
 
     <div class="step-section hidden space-y-6 text-center" data-step="6">
       <div class="space-y-2 relative">
         <h2 class="font-gelasio text-6xl text-three-beige select-none leading-none">Today</h2>
-        <p class="text-three-beige text-sm font-bold tracking-widest">（確認・編集）</p>
+        <p class="text-three-beige text-sm font-bold tracking-widest">（<%= t('diaries.new.summary_hint') %>）</p>
       </div>
 
       <div id="summary-area" class="space-y-4">
       </div>
 
       <div class="flex flex-col items-center gap-4 pt-4 pb-10">
-        <%= f.submit "保存", class: "w-full bg-three-beige text-three-dark py-4 rounded-xl font-bold hover:bg-white hover:scale-[1.02] transition-all cursor-pointer shadow-lg border-none" %>
-        <button type="button" onclick="nextStep(5)" class="text-three-beige/40 text-xs hover:text-three-beige transition">前の画面に戻る</button>
+        <%= f.submit t('helpers.submit.create', model: Diary.model_name.human), class: "w-full bg-three-beige text-three-dark py-4 rounded-xl font-bold hover:bg-white hover:scale-[1.02] transition-all cursor-pointer shadow-lg border-none" %>
+        <button type="button" onclick="nextStep(5)" class="text-three-beige/40 text-xs hover:text-three-beige transition"><%= t('defaults.back_to_previous') %></button>
       </div>
     </div>
 

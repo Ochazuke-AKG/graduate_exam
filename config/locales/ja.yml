@@ -1,5 +1,9 @@
 ja:
   defaults:
+    next: "次へ"
+    back: "戻る"
+    confirm: "確認"
+    back_to_previous: "前の画面に戻る"
     flash_message:
       created: "%{item}を記録しました"
       not_created: "%{item}を記録できませんでした"
@@ -15,6 +19,11 @@ ja:
       create: "%{model}を登録"
       update: "%{model}を更新"
       submit: 保存
+  diaries:
+    new:
+      music_hint: "今日のBGM"
+      memo_hint: "日付/追記"
+      summary_hint: "確認・編集"
   activerecord:
     models:
       user: ユーザー
@@ -27,9 +36,9 @@ ja:
         password_confirmation: パスワード（確認）
       diary:
         entry_date: 記録日
-        good_1: Good1
-        good_2: Good2
-        good_3: Good3
+        good_1: 1つ目のGood
+        good_2: 2つ目のGood
+        good_3: 3つ目のGood
         memo: メモ
         music_title: 曲名
         artist_name: アーティスト名
