@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
 
   def after_sign_in_path_for(resource)
     flash[:notice] = t('user_sessions.create.success')
-    root_path
+    new_diary_path
   end
 
   def after_sign_out_path_for(resource)

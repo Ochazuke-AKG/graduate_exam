@@ -1,0 +1,163 @@
+<div>
+<div class="flex-grow bg-three-dark flex flex-col items-center justify-center py-10 min-h-[calc(100vh-160px)] relative overflow-hidden">
+  
+  <%= form_with model: @diary, local: true, class: "..." do |f| %>
+  <% if @diary.errors.any? %>
+    <div class="bg-red-500/10 border border-red-500 text-red-500 p-3 rounded mb-6 text-xs text-center">
+      <%= t('defaults.flash_message.not_created', item: Diary.model_name.human) %>
+    </div>
+  <% end %>
+    
+    <div class="step-section space-y-8 text-center" data-step="1">
+      <div class="space-y-2">
+        <h2 class="font-gelasio text-three-beige text-4xl select-none leading-none">1</h2>
+        <p class="text-three-beige text-sm font-bold tracking-widest">（<%= Diary.human_attribute_name(:good_1) %>）</p>
+      </div>
+      <%= f.text_field :good_1, autofocus: true, 
+          class: "w-full h-10 px-3 bg-three-beige text-three-dark border-none rounded shadow-inner outline-none transition" %>
+      <div class="flex justify-end pt-4">
+        <button type="button" onclick="nextStep(2)" class="bg-three-beige text-three-dark px-10 py-2 font-bold text-xs rounded shadow-md hover:bg-white transition-all cursor-pointer">
+          <%= t('defaults.next') %>
+        </button>
+      </div>
+    </div>
+
+    <div class="step-section hidden space-y-8 text-center" data-step="2">
+      <div class="space-y-2">
+        <h2 class="font-gelasio text-three-beige text-4xl select-none leading-none">2</h2>
+        <p class="text-three-beige text-sm font-bold tracking-widest">（<%= Diary.human_attribute_name(:good_2) %>）</p>
+      </div>
+      <%= f.text_field :good_2, class: "w-full h-10 px-3 bg-three-beige text-three-dark border-none rounded shadow-inner outline-none" %>
+      <div class="flex justify-between items-center pt-4">
+        <button type="button" onclick="nextStep(1)" class="text-three-beige/40 text-xs hover:text-three-beige transition"><%= t('defaults.back') %></button>
+        <button type="button" onclick="nextStep(3)" class="bg-three-beige text-three-dark px-10 py-2 font-bold text-xs rounded shadow-md hover:bg-white transition-all cursor-pointer">
+          <%= t('defaults.next') %>
+        </button>
+      </div>
+    </div>
+
+    <div class="step-section hidden space-y-8 text-center" data-step="3">
+      <div class="space-y-2">
+        <h2 class="font-gelasio text-three-beige text-4xl select-none leading-none">3</h2>
+        <p class="text-three-beige text-sm font-bold tracking-widest">（<%= Diary.human_attribute_name(:good_3) %>）</p>
+      </div>
+      <%= f.text_field :good_3, class: "w-full h-10 px-3 bg-three-beige text-three-dark border-none rounded shadow-inner outline-none" %>
+      <div class="flex justify-between items-center pt-4">
+        <button type="button" onclick="nextStep(2)" class="text-three-beige/40 text-xs hover:text-three-beige transition"><%= t('defaults.back') %></button>
+        <button type="button" onclick="nextStep(4)" class="bg-three-beige text-three-dark px-10 py-2 font-bold text-xs rounded shadow-md hover:bg-white transition-all cursor-pointer">次へ</button>
+      </div>
+    </div>
+
+    <div class="step-section hidden space-y-8 text-center" data-step="4">
+      <div class="space-y-2">
+        <h2 class="font-gelasio text-three-beige text-4xl select-none">Music</h2>
+        <p class="text-three-beige text-sm font-bold tracking-widest">（<%= t('diaries.new.music_hint') %>）</p>
+      </div>
+      <div class="space-y-4 text-left">
+        <div>
+          <%= f.label :artist_name, Diary.human_attribute_name(:artist_name), class: "text-three-beige text-[10px] mb-1 block" %>
+          <%= f.text_field :artist_name, class: "w-full h-10 px-3 bg-three-beige text-three-dark border-none rounded shadow-inner outline-none" %>
+        </div>
+        <div>
+          <%= f.label :music_title, Diary.human_attribute_name(:music_title), class: "text-three-beige text-[10px] mb-1 block" %>
+          <%= f.text_field :music_title, class: "w-full h-10 px-3 bg-three-beige text-three-dark border-none rounded shadow-inner outline-none" %>
+        </div>
+      </div>
+      <div class="flex justify-between items-center pt-4">
+        <button type="button" onclick="nextStep(3)" class="text-three-beige/40 text-xs hover:text-three-beige transition"><%= t('defaults.back') %></button>
+        <button type="button" onclick="nextStep(5)" class="bg-three-beige text-three-dark px-10 py-2 font-bold text-xs rounded shadow-md hover:bg-white transition-all cursor-pointer">
+          <%= t('defaults.next') %>
+        </button>
+      </div>
+    </div>
+
+    <div class="step-section hidden space-y-8 text-center" data-step="5">
+      <div class="space-y-2">
+        <h2 class="font-gelasio text-three-beige text-4xl select-none">Date/Memo</h2>
+        <p class="text-three-beige text-sm font-bold tracking-widest">（<%= t('diaries.new.memo_hint') %>）</p>
+      </div>
+      <div class="space-y-4 text-left">
+        <%= f.date_field :entry_date, value: Time.current.to_date, class: "w-full h-10 px-3 bg-three-beige text-three-dark border-none rounded shadow-inner outline-none" %>
+        <%= f.text_area :memo, rows: 3, class: "w-full p-3 bg-three-beige text-three-dark border-none rounded shadow-inner outline-none" %>
+      </div>
+      <div class="flex justify-between items-center pt-4">
+        <button type="button" onclick="nextStep(4)" class="text-three-beige/40 text-xs hover:text-three-beige transition"><%= t('defaults.back') %></button>
+        <button type="button" onclick="updateSummary(); nextStep(6)" class="bg-three-beige text-three-dark px-10 py-2 font-bold text-xs rounded shadow-md hover:bg-white transition-all cursor-pointer">
+          <%= t('defaults.confirm') %>
+        </button>
+      </div>
+    </div>
+
+    <div class="step-section hidden space-y-6 text-center" data-step="6">
+      <div class="space-y-2 relative">
+        <h2 class="font-gelasio text-6xl text-three-beige select-none leading-none">Today</h2>
+        <p class="text-three-beige text-sm font-bold tracking-widest">（<%= t('diaries.new.summary_hint') %>）</p>
+      </div>
+
+      <div id="summary-area" class="space-y-4">
+      </div>
+
+      <div class="flex flex-col items-center gap-4 pt-4 pb-10">
+        <%= f.submit t('helpers.submit.create', model: Diary.model_name.human), class: "w-full bg-three-beige text-three-dark py-4 rounded-xl font-bold hover:bg-white hover:scale-[1.02] transition-all cursor-pointer shadow-lg border-none" %>
+        <button type="button" onclick="nextStep(5)" class="text-three-beige/40 text-xs hover:text-three-beige transition"><%= t('defaults.back_to_previous') %></button>
+      </div>
+    </div>
+
+  <% end %>
+
+</div>
+
+<script>
+  function nextStep(step) {
+    document.querySelectorAll('.step-section').forEach(el => el.classList.add('hidden'));
+    const target = document.querySelector(`[data-step="${step}"]`);
+    target.classList.remove('hidden');
+    // 次のステップの最初の入力をフォーカス
+    const input = target.querySelector('input, textarea');
+    if (input) input.focus();
+  }
+
+  function updateSummary() {
+    const g1 = document.querySelector('[name="diary[good_1]"]').value;
+    const g2 = document.querySelector('[name="diary[good_2]"]').value;
+    const g3 = document.querySelector('[name="diary[good_3]"]').value;
+    const music = document.querySelector('[name="diary[music_title]"]').value;
+    const artist = document.querySelector('[name="diary[artist_name]"]').value;
+    const date = document.querySelector('[name="diary[entry_date]"]').value;
+    const memo = document.querySelector('[name="diary[memo]"]').value;
+
+    const summaryArea = document.getElementById('summary-area');
+    
+    // Summary Area 内に「編集可能なフォーム」を生成
+    // ※ ログイン画面等と同じスタイル（bg-three-beige）を適用
+    summaryArea.innerHTML = `
+      <div class="text-left space-y-3 bg-white/5 p-6 rounded-2xl border border-white/10 shadow-2xl">
+        <div class="flex justify-between items-center mb-2">
+          <span class="text-three-beige text-[10px] font-bold opacity-60 uppercase tracking-widest font-gelasio">Review & Edit</span>
+          <input type="date" value="${date}" oninput="syncBack('entry_date', this.value)" class="bg-transparent text-three-beige text-xs border-none outline-none cursor-pointer">
+        </div>
+
+        <div class="space-y-2">
+          <input type="text" value="${g1}" oninput="syncBack('good_1', this.value)" class="w-full h-9 px-3 bg-three-beige text-three-dark border-none rounded shadow-inner outline-none text-sm font-bold" placeholder="Good 1">
+          <input type="text" value="${g2}" oninput="syncBack('good_2', this.value)" class="w-full h-9 px-3 bg-three-beige text-three-dark border-none rounded shadow-inner outline-none text-sm font-bold" placeholder="Good 2">
+          <input type="text" value="${g3}" oninput="syncBack('good_3', this.value)" class="w-full h-9 px-3 bg-three-beige text-three-dark border-none rounded shadow-inner outline-none text-sm font-bold" placeholder="Good 3">
+        </div>
+
+        <div class="grid grid-cols-2 gap-2 mt-4">
+          <input type="text" value="${artist}" oninput="syncBack('artist_name', this.value)" class="w-full h-8 px-3 bg-three-beige/80 text-three-dark border-none rounded shadow-inner outline-none text-[10px]" placeholder="Artist">
+          <input type="text" value="${music}" oninput="syncBack('music_title', this.value)" class="w-full h-8 px-3 bg-three-beige/80 text-three-dark border-none rounded shadow-inner outline-none text-[10px]" placeholder="Music">
+        </div>
+
+        <textarea oninput="syncBack('memo', this.value)" class="w-full p-3 mt-2 bg-three-beige/80 text-three-dark border-none rounded shadow-inner outline-none text-xs" rows="2" placeholder="Memo...">${memo}</textarea>
+      </div>
+    `;
+  }
+
+  // Step 6 で書き換えた内容を、元の隠れているフォーム（f.text_field等）にも反映させる関数
+  function syncBack(fieldName, value) {
+    const originalInput = document.querySelector(`[name="diary[${fieldName}]"]`);
+    if (originalInput) {
+      originalInput.value = value;
+    }
+  }
+</script>
