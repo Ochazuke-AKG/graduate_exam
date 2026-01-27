@@ -2,7 +2,7 @@ class DiariesController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @diaries = current_user.diaries.order(entry_date: :desc)
+    @diaries = current_user.diaries.order(entry_date: :desc).page(params[:page]).per(10)
   end
 
   def new
