@@ -1,0 +1,54 @@
+<div class="flex-grow bg-three-dark min-h-[calc(100vh-160px)] py-12 px-6">
+  <div class="max-w-2xl mx-auto space-y-8">
+
+    <% if @diaries.present? %>
+      <% @diaries.each do |diary| %>
+        <div class="bg-three-beige rounded-2xl p-8 shadow-sm border border-white/5 hover:shadow-md transition-shadow">
+          <div class="flex justify-between items-center mb-6 border-b border-three-dark/5 pb-2">
+            <span class="font-gelasio text-three-dark opacity-40 text-sm">
+              <%= diary.entry_date.strftime("%Y.%m.%d") %>
+            </span>
+          </div>
+
+          <div class="space-y-4 mb-8">
+            <div class="flex gap-4">
+              <span class="font-gelasio text-three-dark opacity-20 text-xl italic">1</span>
+              <p class="text-three-dark text-sm font-medium pt-1"><%= diary.good_1 %></p>
+            </div>
+            <div class="flex gap-4">
+              <span class="font-gelasio text-three-dark opacity-20 text-xl italic">2</span>
+              <p class="text-three-dark text-sm font-medium pt-1"><%= diary.good_2 %></p>
+            </div>
+            <div class="flex gap-4">
+              <span class="font-gelasio text-three-dark opacity-20 text-xl italic">3</span>
+              <p class="text-three-dark text-sm font-medium pt-1"><%= diary.good_3 %></p>
+            </div>
+          </div>
+
+          <div class="pt-4 border-t border-three-dark/5 flex justify-between items-end">
+            <div class="text-[10px] text-three-dark/50 italic flex items-center gap-1">
+              <span class="text-sm not-italic">♫</span>
+              <span><%= diary.artist_name %> / <%= diary.music_title %></span>
+            </div>
+            <% if diary.memo.present? %>
+              <p class="text-[10px] text-three-dark/40 max-w-[60%] text-right leading-relaxed">
+                <%= diary.memo %>
+              </p>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
+
+      <div class="flex justify-center pt-8 font-gelasio text-three-beige">
+        <%= paginate @diaries %>
+      </div>
+
+    <% else %>
+      <div class="text-center py-20">
+        <p class="text-three-dark/30 text-sm tracking-widest mb-6">まだ記録がありません</p>
+        <%= link_to t('header.new_diary'), new_diary_path, class: "text-three-beige border-three-dark/20 px-8 py-2 rounded-full text-xs font-bold hover:bg-three-dark hover:text-three-beige transition" %>
+      </div>
+    <% end %>
+
+  </div>
+</div>
