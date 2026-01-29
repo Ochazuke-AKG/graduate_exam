@@ -11,6 +11,7 @@ ja:
       deleted: "%{item}を削除しました"
     create: 登録
     post: 投稿
+    edit: 編集
     update: 更新
     delete: 削除
     delete_confirm: 削除しますか？

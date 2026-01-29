@@ -1,0 +1,42 @@
+<div class="flex-grow bg-three-dark flex flex-col items-center py-12 px-6 min-h-[calc(100vh-160px)]">
+  <div class="w-full max-w-[400px]">
+    <h2 class="text-center text-three-beige text-xl font-bold mb-10 tracking-widest">
+      <%= t('defaults.edit') %>
+    </h2>
+
+    <%= form_with model: @diary, local: true, class: "space-y-6" do |f| %>
+      <div>
+        <%= f.label :entry_date, class: "block text-three-beige text-[10px] mb-2 font-bold" %>
+        <%= f.date_field :entry_date, class: "w-full h-10 px-3 bg-three-beige text-three-dark border-none rounded shadow-inner outline-none" %>
+      </div>
+
+      <% [:good_1, :good_2, :good_3].each_with_index do |good, i| %>
+        <div>
+          <%= f.label good, "Good #{i+1}", class: "block text-three-beige text-[10px] mb-2 font-bold" %>
+          <%= f.text_field good, class: "w-full h-10 px-3 bg-three-beige text-three-dark border-none rounded shadow-inner outline-none font-bold" %>
+        </div>
+      <% end %>
+
+      <div class="grid grid-cols-2 gap-4">
+        <div>
+          <%= f.label :artist_name, class: "block text-three-beige text-[10px] mb-2 font-bold" %>
+          <%= f.text_field :artist_name, class: "w-full h-10 px-3 bg-three-beige/90 text-three-dark border-none rounded shadow-inner outline-none text-xs" %>
+        </div>
+        <div>
+          <%= f.label :music_title, class: "block text-three-beige text-[10px] mb-2 font-bold" %>
+          <%= f.text_field :music_title, class: "w-full h-10 px-3 bg-three-beige/90 text-three-dark border-none rounded shadow-inner outline-none text-xs" %>
+        </div>
+      </div>
+
+      <div>
+        <%= f.label :memo, class: "block text-three-beige text-[10px] mb-2 font-bold" %>
+        <%= f.text_area :memo, rows: 4, class: "w-full p-3 bg-three-beige/90 text-three-dark border-none rounded shadow-inner outline-none text-xs leading-relaxed" %>
+      </div>
+
+      <div class="flex flex-col items-center gap-6 pt-6">
+        <%= f.submit t('defaults.update'), class: "w-full bg-three-beige text-three-dark py-4 rounded-xl font-bold hover:bg-white transition-all cursor-pointer shadow-lg border-none" %>
+        <%= link_to t('defaults.back'), diaries_path, class: "text-three-beige/40 text-xs hover:text-three-beige transition" %>
+      </div>
+    <% end %>
+  </div>
+</div>
