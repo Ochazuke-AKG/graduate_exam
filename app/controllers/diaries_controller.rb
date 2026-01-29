@@ -1,5 +1,5 @@
 class DiariesController < ApplicationController
-  before_action :set_diary, only: [:edit, :update]
+  before_action :set_diary, only: [:edit, :update, :destroy]
 
   def index
     @diaries = current_user.diaries.order(entry_date: :desc).page(params[:page]).per(10)
@@ -27,6 +27,11 @@ class DiariesController < ApplicationController
     else
       render :edit, status: :unprocessable_entity
     end
+  end
+
+  def destroy
+    @diary.destroy
+    redirect_to diaries_path, notice: t('defaults.flash_message.deleted', item: Diary.model_name.human), status: :see_other
   end
 
   private
