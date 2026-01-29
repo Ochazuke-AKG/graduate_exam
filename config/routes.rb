@@ -7,7 +7,7 @@ Rails.application.routes.draw do
 
   root "static_pages#top"
 
-  resources :diaries, only: [:index, :new, :create]
+  resources :diaries, only: [:index, :new, :create, :edit, :update]
 
   get "up" => "rails/health#show", as: :rails_health_check
 end
