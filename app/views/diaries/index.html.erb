@@ -35,7 +35,11 @@
                 Memo: <%= diary.memo %>
               </p>
             <% end %>
-            <div class="flex justify-end pt-2">
+            <div class="flex justify-end items-center gap-x-10 pt-2">
+              <%= button_to t('defaults.delete'), diary_path(diary), 
+                  method: :delete, 
+                  form: { onsubmit: "return confirm('#{t('defaults.delete_confirm')}');" },
+                  class: "text-three-dark hover:opacity-90 text-xs font-bold transition underline underline-offset-4 bg-transparent border-none p-0 cursor-pointer" %>
               <%= link_to t('defaults.edit'), edit_diary_path(diary), 
                   class: "bg-three-dark text-three-beige px-6 py-2 rounded text-xs font-bold hover:opacity-90 transition shadow-md" %>
             </div>
