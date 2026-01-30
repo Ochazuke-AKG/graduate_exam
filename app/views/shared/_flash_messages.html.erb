@@ -4,7 +4,7 @@
       bg_color = message_type == "notice" ? "bg-three-beige" : "bg-red-500"
       text_color = message_type == "notice" ? "text-three-dark" : "text-white"
     %>
-    <div class="<%= bg_color %> <%= text_color %> px-6 py-3 rounded-full shadow-xl text-sm font-bold text-center mb-3 animate-bounce pointer-events-auto border border-three-dark/10">
+    <div class="<%= bg_color %> <%= text_color %> px-6 py-3 rounded-full shadow-xl text-sm font-bold text-center mb-3 pointer-events-auto border border-three-dark/10">
       <%= message %>
     </div>
   <% end %>
