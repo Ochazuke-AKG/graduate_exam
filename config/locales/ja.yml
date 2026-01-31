@@ -26,6 +26,9 @@ ja:
       memo_hint: "日付/追記"
       summary_hint: "確認・編集"
   activerecord:
+    errors:
+      messages:
+        blank: "は入力が必要です"
     models:
       user: ユーザー
       diary: 日記
@@ -37,9 +40,9 @@ ja:
         password_confirmation: パスワード（確認）
       diary:
         entry_date: 記録日
-        good_1: 1つ目のGood
-        good_2: 2つ目のGood
-        good_3: 3つ目のGood
+        good_1: Good 1
+        good_2: Good 2
+        good_3: Good 3
         memo: メモ
         music_title: 曲名
         artist_name: アーティスト名

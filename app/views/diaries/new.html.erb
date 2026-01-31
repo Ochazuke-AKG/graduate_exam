@@ -3,10 +3,15 @@
   
   <%= form_with model: @diary, local: true, class: "..." do |f| %>
   <% if @diary.errors.any? %>
-    <div class="bg-red-500/10 border border-red-500 text-red-500 p-3 rounded mb-6 text-xs text-center">
-      <%= t('defaults.flash_message.not_created', item: Diary.model_name.human) %>
+    <div class="w-full mb-8 px-4 py-3 bg-red-50 border-l-4 border-red-400 text-red-700">
+      <ul class="list-disc list-inside text-xs font-bold space-y-1">
+        <% @diary.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
     </div>
-  <% end %>
+  
+    <% end %>
     
     <div class="step-section space-y-8 text-center" data-step="1">
       <div class="space-y-2">

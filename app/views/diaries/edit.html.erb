@@ -4,6 +4,19 @@
       <%= t('defaults.edit') %>
     </h2>
 
+    <% if @diary.errors.any? %>
+      <div class="mb-8 p-4 bg-red-950/30 border border-red-500/50 rounded-lg">
+        <ul class="space-y-1">
+          <% @diary.errors.full_messages.each do |message| %>
+            <li class="text-red-400 text-[11px] font-bold flex items-center gap-2">
+              <span class="w-1 h-1 bg-red-400 rounded-full"></span>
+              <%= message %>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
     <%= form_with model: @diary, local: true, class: "space-y-6" do |f| %>
       <div>
         <%= f.label :entry_date, class: "block text-three-beige text-[10px] mb-2 font-bold" %>
